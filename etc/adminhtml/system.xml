@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="spojit" translate="label" sortOrder="999">
+            <label>Spojit</label>
+        </tab>
+        <section id="spojit" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Settings</label>
+            <tab>spojit</tab>
+            <resource>SpojitShipping::spojitshipping_config</resource>
+            <group id="module_config" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Spojit Configuration</label>
+                <field id="workflow_token" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Workflow Token</label>
+                    <comment><![CDATA[The Spojit Workflow Token]]></comment>
+                </field>
+                <field id="authorization_token" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Authorization Token</label>
+                    <comment><![CDATA[The Spojit Authorization Token]]></comment>
+                </field>
+            </group>
+        </section>
+        <section id="carriers" translate="label" type="text" sortOrder="320" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <group id="spojitshipping" translate="label" type="text" sortOrder="900" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Spojit Shipping</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="0" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Title</label>
+                </field>
+<!--                <field id="shipping_cost" translate="label" type="text" sortOrder="40" showInDefault="1"-->
+<!--                       showInWebsite="1" showInStore="0">-->
+<!--                    <label>Shipping Cost</label>-->
+<!--                    <validate>validate-number validate-zero-or-greater</validate>-->
+<!--                </field>-->
+                <field id="allowed_methods" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Allowed Methods</label>
+                    <source_model>Spojit\SpojitShipping\Model\Config\Source\Allowedmethods</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="sallowspecific" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Ship to Applicable Countries</label>
+                    <frontend_class>shipping-applicable-country</frontend_class>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Ship to Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="showmethod" translate="label" type="select" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Show Method if Not Applicable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_class>shipping-skip-hide</frontend_class>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Sort Order</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

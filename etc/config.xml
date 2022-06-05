@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <spojitshipping>
+                <active>0</active>
+                <title>Spojit Shipping</title>
+                <shipping_cost>10</shipping_cost>
+                <sallowspecific>0</sallowspecific>
+                <sort_order>15</sort_order>
+                <model>Spojit\SpojitShipping\Model\Carrier\SpojitShipping</model>
+            </spojitshipping>
+        </carriers>
+    </default>
+</config>
