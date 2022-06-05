@@ -127,6 +127,21 @@ class SpojitShipping extends AbstractCarrier implements CarrierInterface
      */
     public function collectRates(RateRequest $request)
     {
+        try {
+            return $this->getResult($request);
+        } catch (\Exception $e) {
+            $this->_logger->error(sprintf('SPOJIT ERROR: %s', $e->getMessage()));
+            return false;
+        }
+
+    }
+
+    /**
+     * @param RateRequest $request
+     * @return \Magento\Shipping\Model\Rate\Result|bool
+     */
+    protected function getResult(RateRequest $request)
+    {
         if (!$this->getConfigFlag('active')) {
             return false;
         }

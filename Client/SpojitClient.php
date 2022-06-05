@@ -21,7 +21,7 @@ class SpojitClient
     protected $logger;
 
     /**
-     * @param $authorization
+     * @param string $authorization
      * @param LoggerInterface $logger
      */
     public function __construct($authorization, $logger)
@@ -31,11 +31,13 @@ class SpojitClient
     }
 
     /**
+     * @param string $workflowId
      * @param array $data
-     * @return mixed
-     * @throws Exception
+     * @param false $debug
+     * @return false|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function sendRequest($workflowId, array $data, $debug = true)
+    public function sendRequest($workflowId, array $data, $debug = false)
     {
         try {
 
